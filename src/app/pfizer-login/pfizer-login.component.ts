@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, Directive, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-pfizer-login',
@@ -9,17 +10,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PfizerLoginComponent implements OnInit {
 
-  loginForm : FormGroup; 
+  model: any = {};
+  submitted = false;
+  loginMessage = '';
+  loginErrorStatus = false;
+  
 
-  constructor(
-    //private formBuilder: FormBuilder, 
-    //private formGroup: FormGroup,
-    // private route: ActivatedRoute,
-    // private router: Router
+  loginFormSubmit() {
+    this.submitted = true;
+    this.model.loginErrorStatus = false;
+    if(this.model.pfizerNTID=="CHODAC" && this.model.pfizerPassword=="Nunet#v5kp") {
+      this.model.loginMessage="Success"
+    }
+    else {
+      this.loginMessage = "Invalid NTID / Password";
+      this.loginErrorStatus = true;
+    }
+    console.log(this.model);
+  }
 
-  ) { }
+  constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
