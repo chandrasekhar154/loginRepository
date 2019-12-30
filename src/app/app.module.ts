@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { PfizerLoginComponent } from './pfizer-login/pfizer-login.component';
 import { PfizerHomeComponent } from './pfizer-home/pfizer-home.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { PfizerHomeComponent } from './pfizer-home/pfizer-home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
