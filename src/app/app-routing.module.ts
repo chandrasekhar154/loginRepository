@@ -5,7 +5,7 @@ import { PfizerLoginComponent} from './pfizer-login/pfizer-login.component';
 
 const routes: Routes = [
   { path: '', component: PfizerLoginComponent },
-  { path: 'home', component: PfizerHomeComponent},
+  { path: 'pfizer-home', component: PfizerHomeComponent},
 ];
 
 @NgModule({
