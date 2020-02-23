@@ -7,12 +7,14 @@ import { PfizerLoginComponent } from './pfizer-login/pfizer-login.component';
 import { PfizerHomeComponent } from './pfizer-home/pfizer-home.component';
 
 import { FormsModule } from '@angular/forms';
+import { PfizerPackOrderComponent } from './pfizer-pack-order/pfizer-pack-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PfizerLoginComponent,
-    PfizerHomeComponent
+    PfizerHomeComponent,
+    PfizerPackOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class PfizerLoginComponent implements OnInit {
   submitted = false;
   loginMessage = '';
   loginErrorStatus = false;
-  
+
 
   loginFormSubmit() {
     this.submitted = true;
@@ -35,7 +35,7 @@ export class PfizerLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
 }

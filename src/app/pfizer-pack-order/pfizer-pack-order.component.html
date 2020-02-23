@@ -1,0 +1,32 @@
+<table class="table table-bordered table-hover" style="overflow: auto; border-radius: 4px;">
+
+    <thead>
+      <tr>
+        <th>Protocol Id</th>
+        <th>Order Id</th>
+        <th>Date</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of listOfOrders">
+        <td>{{ order.ProtocolID }}</td>
+        <td>{{ order.OrderID }}</td>
+        <td>{{ order.Date }}</td>
+        <td>{{ order.Type }}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+<div class="pagination">
+    <a href="#">&laquo;</a>
+    <a *ngFor="let page of paginationArray" (click)="changePage(page)" class="{{page.isActive}}">{{page.value}}</a>
+    <a href="#">&raquo;</a>
+</div>
+<br />
+<br />
+<div class="pagination">
+    <a href="">&laquo;</a>
+    <a *ngFor="let pagee of sPaginationArray" (click)="changeFormat(pagee)" class="{{pagee.isActive}}">{{pagee.value}}</a>
+    <a href="">&raquo;</a>
+</div>
