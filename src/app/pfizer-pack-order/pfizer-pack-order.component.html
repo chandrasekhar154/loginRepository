@@ -1,5 +1,4 @@
 <table class="table table-bordered table-hover" style="overflow: auto; border-radius: 4px;">
-
     <thead>
       <tr>
         <th>Protocol Id</th>
@@ -16,7 +15,6 @@
         <td>{{ order.Type }}</td>
       </tr>
     </tbody>
-    
   </table>
 <div class="pagination">
     <a href="#">&laquo;</a>
@@ -26,7 +24,5 @@
 <br />
 <br />
 <div class="pagination">
-    <a href="">&laquo;</a>
     <a *ngFor="let pagee of sPaginationArray" (click)="changeFormat(pagee)" class="{{pagee.isActive}}">{{pagee.value}}</a>
-    <a href="">&raquo;</a>
 </div>

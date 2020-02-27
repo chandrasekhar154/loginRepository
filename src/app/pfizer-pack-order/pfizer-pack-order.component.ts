@@ -283,19 +283,40 @@ export class PfizerPackOrderComponent implements OnInit {
 
   seperatePagination() {
 
-    let pageMax = 50;
+    let pageMax = 21;
     let pageMin = 1;
     let pagenateObject : any = {};
 
+    let pageMaxValueNew = pageMax + 2;
+
     if(pageMax <=7) {
       this.sPaginationArray = new Array();
-      for(var i=0; i<pageMax; i++){
+      // for(var i=0; i<pageMax; i++){
+      //   pagenateObject = {};
+      //   pagenateObject.index = i;
+      //   pagenateObject.value = i+1;
+      //   pagenateObject.isActive = "";
+      //   if(i==0){
+      //     pagenateObject.isActive = "active";
+      //   }
+      //   this.sPaginationArray[i] = pagenateObject;
+      // }
+      for(var i=0; i<pageMaxValueNew; i++){
         pagenateObject = {};
         pagenateObject.index = i;
-        pagenateObject.value = i+1;
+        pagenateObject.value = i;
         pagenateObject.isActive = "";
+        // if(i==0){
+        //   pagenateObject.isActive = "active";
+        // }
         if(i==0){
+          pagenateObject.value = "Prev";
+        }
+        else if(i==1) {
           pagenateObject.isActive = "active";
+        }
+        else if(i == pageMaxValueNew - 1) {
+          pagenateObject.value = "Next";
         }
         this.sPaginationArray[i] = pagenateObject;
       }
@@ -304,20 +325,29 @@ export class PfizerPackOrderComponent implements OnInit {
 
       //this.sPaginationArray = new Array(7);
 
-      for(var i=0; i<7; i++){
+      for(var i=0; i<9; i++){
 
         pagenateObject = {};
         pagenateObject.index = i;
-        pagenateObject.value = i+1;
+        pagenateObject.value = i;
         pagenateObject.isActive = "";
         if(i==0){
-          pagenateObject.isActive = "active";
+          this.sPaginationArray[i] = pagenateObject;
+          this.sPaginationArray[i].value = "Prev";
         }
-        if(i == 5){
+        if(i==1) {
+          this.sPaginationArray[i] = pagenateObject;
+          this.sPaginationArray[i].isActive = "active";
+        }
+        if(i == 6){
           this.sPaginationArray[i] = pagenateObject;
           this.sPaginationArray[i].value = "..";
         }
-        else if(i == 6){
+        if (i == 8) {
+          this.sPaginationArray[i] = pagenateObject;
+          this.sPaginationArray[i].value = "Next"; 
+        }
+        else if(i == 7){
           this.sPaginationArray[i] = pagenateObject;
           this.sPaginationArray[i].value = pageMax;
         }
@@ -333,18 +363,29 @@ export class PfizerPackOrderComponent implements OnInit {
   }
 
   changeFormat(pagee) {
-    let pageMax = 50;
+    let pageMax = 21;
     let pageMin = 1;
+
+    let pageMaxValueNew = pageMax + 2;
 
     if( pageMax <=7){
       //this.sPaginationArray = new Array();
-      for(var i = 0; i<pageMax; i++) {
-        if(i == pagee.index){
-          this.sPaginationArray[i].isActive = "active";
-        }
-        else{
+      // for(var i = 0; i<pageMax; i++) {
+      //   if(i == pagee.index){
+      //     this.sPaginationArray[i].isActive = "active";
+      //   }
+      //   else{
+      //     this.sPaginationArray[i].isActive = "";
+      //   }
+      // }
+      for(var i = 0; i<pageMaxValueNew; i++) {
+        // if((i!=0) && (i!= pageMaxValueNew - 1)){
           this.sPaginationArray[i].isActive = "";
-        }
+          this.sPaginationArray[pagee.index].isActive = "active";
+        // }
+        // else{
+        //   this.sPaginationArray[i].isActive = "";
+        // }
       }
     }
     else if( pageMax > 7) {
@@ -358,27 +399,27 @@ export class PfizerPackOrderComponent implements OnInit {
         }
       }
 
-      if( (pagee.index == 4) &&  (pageMax - pagee.value) != 2 ) {
-        this.sPaginationArray[1].value = "..";
-        this.sPaginationArray[2].value = pagee.value - 1;
-        this.sPaginationArray[3].value = pagee.value;
-        this.sPaginationArray[3].isActive = "active";
-        this.sPaginationArray[4].value = pagee.value + 1;
-        this.sPaginationArray[4].isActive = "";
+      if( (pagee.index == 5) &&  (pageMax - pagee.value) != 2 ) {
+        this.sPaginationArray[2].value = "..";
+        this.sPaginationArray[3].value = pagee.value - 1;
+        this.sPaginationArray[4].value = pagee.value;
+        this.sPaginationArray[4].isActive = "active";
+        this.sPaginationArray[5].value = pagee.value + 1;
+        this.sPaginationArray[5].isActive = "";
         if((pageMax - pagee.value) == 2) {
-          this.sPaginationArray[5].value = pageMax - 1;
+          this.sPaginationArray[6].value = pageMax - 1;
         }
       }
-      if( (pagee.index == 2) &&  (pagee.value - pageMin) != 2 ) {
-        this.sPaginationArray[1].value = "..";
-        this.sPaginationArray[2].value = pagee.value - 1;
-        this.sPaginationArray[2].isActive = "";
-        this.sPaginationArray[3].value = this.sPaginationArray[2].value + 1;
-        this.sPaginationArray[3].isActive = "active";
+      if( (pagee.index == 3) &&  (pagee.value - pageMin) != 2 ) {
+        this.sPaginationArray[2].value = "..";
+        this.sPaginationArray[3].value = pagee.value - 1;
+        this.sPaginationArray[3].isActive = "";
         this.sPaginationArray[4].value = this.sPaginationArray[3].value + 1;
-        this.sPaginationArray[5].value = "..";
+        this.sPaginationArray[5].value = this.sPaginationArray[4].value + 1;
+        this.sPaginationArray[4].isActive = "active";
+        this.sPaginationArray[6].value = "..";
         if((pagee.value - pageMin) == 2) {
-          this.sPaginationArray[1].value = pageMin + 1;
+          this.sPaginationArray[2].value = pageMin + 1;
         }
       }
     }
